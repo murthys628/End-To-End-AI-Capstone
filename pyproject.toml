@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "end-to-end-ai-capstone"
+version = "0.1.0"
+description = "A modular, local-first AI capstone demo"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "opencv-contrib-python>=4.10,<5",
+]
+
+[project.optional-dependencies]
+voice = ["vosk>=0.3.45", "sounddevice>=0.4.6"]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+capstone = "capstone.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
